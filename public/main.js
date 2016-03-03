@@ -13,9 +13,14 @@ $(document).ready(function(){
 	// function to save fee data as a variable and then call functions once the data is saved
 	function getFeeData() {
 		$.getJSON('fees.json', function(data) {
+		 	
 		 	feeStructure = data;
+
+		}).done(function() {
+			
 			orderItemCost(orders);
 			distributions(orders);
+
 		});
 	}
 
@@ -27,7 +32,6 @@ $(document).ready(function(){
 			}
 		}
 	}
-
 
 	getFeeData();
 
@@ -81,10 +85,11 @@ $(document).ready(function(){
 
 	function distributions(order) {
 		
-		// Declare variables & distribution amounts for each fee type
+		// Declare variables for each order type
 		var realPropertyRecordingType = 0;
 		var birthCertificateType = 0;
 
+		// Variables associated with the cost of each fee
 		var realPropertyRecordingFee = 5;
 		var recordsManagementPreservationFee = 10;
 		var recordsArchiveFee = 10;
@@ -148,8 +153,11 @@ $(document).ready(function(){
 				$('.distributions').append('<p>Vital Statistics Preservation Fund: $' + (vitalStatisticsPreservationFee * individualBirthCertificate) + '</p>');
 
 			}
+
 			$('.distributions').append('<hr>');
 		}
+
+		// Append the final fund totals for the entire order
 		$('.distributions').append('<h2>Fund Totals for all Orders</h2>');
 		$('.distributions').append('<p>Recording Fund: $' + (realPropertyRecordingFee * realPropertyRecordingType) + '</p>');
 		$('.distributions').append('<p>Records Management Preservation Fund: $' + (recordsManagementPreservationFee * realPropertyRecordingType) + '</p>');

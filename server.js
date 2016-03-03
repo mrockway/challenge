@@ -88,7 +88,7 @@ app.get('/order_prices', function(req,res) {
 		}
 		
 		// push the order number, array of item costs, and the total cost into an object
-		finalOrderCosts.push({'order_number': orderNumber , 'order_item_costs':orderItemArray, 'order_total': itemTotal });
+		finalOrderCosts.push({'order_number': orderNumber , 'order_item_costs': orderItemArray, 'order_total': itemTotal });
 
 	}
 
@@ -159,7 +159,6 @@ app.get('/fund_distributions', function(req,res) {
 																	'vital_statistics_fund': (vitalStatisticsFee * birthCertificateType),
 																	'vital_statistics_preservation_fund': (vitalStatisticsPreservationFee * birthCertificateType),
 																	'other_fund': otherFunds
-																	
 																};
 
 	// response sent to browser															
