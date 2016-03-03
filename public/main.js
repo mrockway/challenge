@@ -13,9 +13,14 @@ $(document).ready(function(){
 	// function to save fee data as a variable and then call functions once the data is saved
 	function getFeeData() {
 		$.getJSON('fees.json', function(data) {
+		 	
 		 	feeStructure = data;
+
+		}).done(function() {
+			
 			orderItemCost(orders);
 			distributions(orders);
+
 		});
 	}
 
@@ -27,7 +32,6 @@ $(document).ready(function(){
 			}
 		}
 	}
-
 
 	getFeeData();
 
